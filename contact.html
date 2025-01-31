@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+
+    <style>
+        body{
+            background-color:  rgb(83, 25, 25);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #logo{
+            margin-top: 20px;
+            margin-left:20px ;
+        }
+
+        h1{
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 40px;
+            color: white;
+        }
+
+    p{
+        font-size: 30px;
+        float: left;
+        margin-right: 100px;
+        margin-left: 200px;
+        color: white;
+    }
+
+
+
+    header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        form {
+            margin: 2em;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 20px;
+            padding-top: 10px;
+            text-align: left;
+            margin-left: 480px;
+            color: rgb(177, 177, 174);
+        }
+
+        input,
+        select {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border-radius: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+ 
+
+        .input-control input:focus{
+            outline: 0;
+        }
+
+        
+        .input-control.success input {
+            border-color: #09c372;
+        }
+
+        
+        .input-control.error input {
+            border-color: #ff3860;
+        }
+
+        
+        .input-control.error  {
+            color: #ff3860;
+            font-size: 19px;
+            height: 13px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <div id="logo">
+        <a href="Home.html"><img src="homelogo.png" width="30px" height="30px"></a>
+        
+    </div>
+
+    <h1>CONTACT</h1>
+
+    <br><br>
+
+    <p>Find us at some Address at some place or call us at 075-123-456
+        <br>
+        <br>
+        -We offer full-service catering for an event, large or small.
+         We understand your needs and we will cater
+        the food to satisey the biggest critteria of them all, Both look and taste.
+
+    </p>
+
+
+
+
+ 
+            <div class="container">
+                <form id="form" action="/">
+                    <div class="input-control">
+                        <label for="name">Name:</label>
+                        <input id="name" name="Username" type="text" placeholder="Your Name" required>
+                        <div class="error"></div>
+                    </div>
+        
+                    <div class="input-control">
+                        <label for="email">Email:</label>
+                        <input id="email" name="Username" type="text" placeholder="Your Email" required>
+                        <div class="error"></div>
+        
+                        <div class="input-control">
+                            <label for="phone">Phone:</label>
+                            <input id="phone" name="phone" type="number" placeholder="Your phone" required>
+                            <div class="error"></div>
+        
+                            <div class="input-control">
+                                <label for="date">Date:</label>
+                                <input id="date" name="date" type="date" required>
+                                <div class="error"></div>
+        
+                                <div class="input-control">
+                                    <label for="time">Time:</label>
+                                    <input id="time" name="time" type="time" required>
+                                    <div class="error"></div>
+        
+                                    <button id="reserveBtn" >Reserve now</button>
+        
+                            
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('form');
+        const email = document.getElementById('email');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            validateInputs();
+        });
+
+        const setError = (element, message) => {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+
+            errorDisplay.innerText = message;
+            inputControl.classList.add('error');
+            inputControl.classList.remove('success');
+        };
+
+        const setSuccess = element => {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+
+            errorDisplay.innerText = '';
+            inputControl.classList.add('success');
+            inputControl.classList.remove('error');
+        };
+
+        const isValidEmail = email => {
+            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            return re.test(String(email).toLowerCase());
+        };
+
+        const validateInputs = () => {
+            const emailValue = email.value.trim();
+
+            if (emailValue === '') {
+                setError(email, 'Email is required');
+            } else if (!isValidEmail(emailValue)) {
+                setError(email, 'Provide a valid email address');
+            } else {
+                setSuccess(email);
+            }
+
+            
+        };
+
+        function validateEmail() {
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value.trim();
+
+            if (emailRegex.test(email)) {
+                emailInput.classList.add('success');
+                emailInput.classList.remove('error');
+            } else {
+                emailInput.classList.add('error');
+                emailInput.classList.remove('success');
+            }
+        }
+
+        reserveBtn.addEventListener('click', () => {
+        alert('the reservation sent');
+    });
+
+    </script>
+</body>
+</html>
